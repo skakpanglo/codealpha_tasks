@@ -1,7 +1,7 @@
 # To-Do-List
 
 
-#### This web page is hosted [here!](https://appdaiite.vercel.app/)
+#### This web page is hosted [here!](codealphatasks1.vercel.app/)
 
 
 ### *Features*:
@@ -17,5 +17,7 @@
 * SubTasks: Adding subtasks to the enlisted tasks, could be an option.
 * Neumorphic Interface: For the to-do's so, it looks more appealing, Can use SASS (.scss file)
 * ScratchPad: Adding an option of a Scratch pad and it can be locally saved.
+* Edit Function: Allows users to modify existing tasks.
+  
 
 
