@@ -77,10 +77,6 @@ body {
     transform: scale(0.95);
 }
 
-.standard-theme {
-    background-image: linear-gradient(100deg, #575656, #062e3f);
-}
-
 .light-theme {
     background-image: linear-gradient(100deg, #d4f1ff, #ffffff);
 }
