@@ -11,6 +11,7 @@
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
     <link rel="stylesheet" href="CSS/main.css">
@@ -40,11 +41,11 @@
 
     <div class="sidebar">
         <ul>
-            <li><i class="fas fa-lightbulb"></i> <span>Notes</span></li>
-            <li><i class="fas fa-bell"></i> <span>Reminders</span></li>
-            <li><i class="fas fa-edit"></i> <span>Edit</span></li>
-            <li><i class="fas fa-download"></i> <span>Archive</span></li>
-            <li><i class="fas fa-trash"></i> <span>Trash</span></li>
+            <li><a href="notes.html"><i class="fas fa-lightbulb"></i> <span>Notes</span></a></li>
+            <li><a href="reminders.html"><i class="fas fa-bell"></i> <span>Reminders</span></a></li>
+            <li><a href="edit.html"><i class="fas fa-edit"></i> <span>Edit</span></a></li>
+            <li><a href="archive.html"><i class="fas fa-download"></i> <span>Archive</span></a></li>
+            <li><a href="trash.html"><i class="fas fa-trash"></i> <span>Trash</span></a></li>
         </ul>
     </div>
 
@@ -59,7 +60,9 @@
     <div id="form">
         <form>
             <input class="todo-input" type="text" placeholder="Take a note...">
-            <button class="todo-btn" type="submit">Add😉!</button>
+            <button class="todo-btn" type="submit">
+                <span class="plus-icon">+</span>
+            </button>            
         </form>
     </div>
 

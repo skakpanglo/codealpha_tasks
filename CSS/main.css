@@ -253,6 +253,19 @@ form button {
     transition: background-color 200ms ease-in-out;
 }
 
+.plus-icon {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #4285F4; /* Google Keep Blue */
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
 /* Items themes */
 .standard-todo {
     background-color: rgb(26, 27, 27);

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Keep Reminder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f1f3f4;
+        }
+        .reminder-card {
+            width: 400px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        .reminder-card input, .reminder-card textarea {
+            width: 100%;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            padding: 5px;
+        }
+        .reminder-card textarea {
+            resize: none;
+            height: 50px;
+        }
+        .reminder-time {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: #e8f0fe;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+            margin: 10px 0;
+            width: fit-content;
+            cursor: pointer;
+        }
+        .icons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .icons button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            color: gray;
+        }
+        .icons .close-btn {
+            font-size: 14px;
+            font-weight: bold;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="reminder-card" id="reminderCard">
+        <input type="text" id="title" placeholder="Title">
+        <textarea id="note" placeholder="Take a note..."></textarea>
+        <div class="reminder-time" onclick="setReminder()">
+            <span>&#x1F551;</span> <span id="reminderTime">Today, 6:30 AM</span>
+        </div>
+        <div class="icons">
+            <div>
+                <button onclick="setReminder()">&#x1F514;</button>
+                <button onclick="shareNote()">&#x1F465;</button>
+                <button onclick="changeColor()">&#x1F3A8;</button>
+                <button onclick="addImage()">&#x1F5BC;</button>
+                <button onclick="saveNote()">&#x1F4BE;</button>
+                <button onclick="moreOptions()">&#x22EE;</button>
+            </div>
+            <button class="close-btn" onclick="closeReminder()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function setReminder() {
+            let time = prompt("Set reminder time (e.g., Tomorrow, 8:00 AM)");
+            if (time) {
+                document.getElementById("reminderTime").textContent = time;
+            }
+        }
+        
+        function shareNote() {
+            alert("Sharing feature coming soon!");
+        }
+        
+        function changeColor() {
+            let colors = ["#ffeb3b", "#ff9800", "#e1bee7", "#c8e6c9", "#b3e5fc"];
+            let randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.getElementById("reminderCard").style.backgroundColor = randomColor;
+        }
+        
+        function addImage() {
+            alert("Image upload feature coming soon!");
+        }
+        
+        function saveNote() {
+            let title = document.getElementById("title").value;
+            let note = document.getElementById("note").value;
+            alert("Note saved: " + (title ? title + " - " : "") + note);
+        }
+        
+        function moreOptions() {
+            alert("More options feature coming soon!");
+        }
+        
+        function closeReminder() {
+            document.getElementById("reminderCard").style.display = "none";
+        }
+    </script>
+</body>
+</html>
