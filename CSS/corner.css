@@ -1,39 +1,127 @@
-.github-corner:hover .octo-arm {
-    animation: octocat-wave 560ms ease-in-out;
+.sidebar {
+    width: 60px;
+    height: 90vh;
+    left: 0;
+    bottom: 0;
+    background-color: #fff;
+    color: white;
+    padding-top: 20px;
+    position: fixed;
+    transition: width 0.3s ease;
+    overflow: hidden;
 }
 
-@keyframes octocat-wave {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    20% {
-        transform: rotate(-25deg);
-    }
-
-    40% {
-        transform: rotate(10deg);
-    }
-
-    60% {
-        transform: rotate(-25deg);
-    }
-
-    80% {
-        transform: rotate(10deg);
-    }
-
-    100% {
-        transform: rotate(0deg);
-    }
+.sidebar:hover {
+    width: 200px;
 }
 
-@media (max-width: 500px) {
-    .github-corner:hover .octo-arm {
-        animation: none;
-    }
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
 
-    .github-corner .octo-arm {
-        animation: octocat-wave 560ms ease-in-out;
-    }
+.sidebar ul li {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.sidebar ul li i {
+    margin-right: 20px;
+    font-size: 20px;
+    color: #000;
+}
+
+.sidebar ul li span {
+    display: none;
+    white-space: nowrap;
+    color: black;
+}
+
+.sidebar:hover ul li span {
+    display: inline;
+}
+
+
+/*header section*/
+.keep-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    padding: 10px 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    width: 100vw; /* Full viewport width */
+    position: fixed; /* Ensures it stays fixed at the top */
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.left-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.left-section i {
+    font-size: 20px;
+    cursor: pointer;
+    padding-left: 4px;
+}
+
+.keep-logo {
+    width: 40px;
+    height: 40px;
+    padding-left: 4px;
+    margin-left: 10px;
+}
+
+.keep-text {
+    font-size: 22px;
+    font-weight: 500;
+    color: #5f6368;
+    padding-left: 8px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: whitesmoke;
+    padding: 5px 10px;
+    border-radius: 8px;
+    flex-grow: 1;
+    max-width: 600px;
+}
+
+.search-bar i {
+    color: #5f6368;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    padding: 5px;
+    width: 100%;
+    font-size: 16px;
+    background: transparent;
+}
+
+.right-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-right: 20px;
+}
+
+.right-section i {
+    font-size: 20px;
+    cursor: pointer;
+    color: #5f6368;
+    right: 20px;
+    left: 20px;
+}
+.right-section i:hover {
+    color: #333;
 }

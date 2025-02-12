@@ -26,39 +26,10 @@ function addToDo(event) {
         return;
     }
 
-    // Create toDo DIV
-    const toDoDiv = document.createElement("div");
-    toDoDiv.classList.add('todo', `${savedTheme}-todo`);
-
-    // Create LI
-    const newToDo = document.createElement('li');
-    newToDo.innerText = toDoInput.value;
-    newToDo.classList.add('todo-item');
-    toDoDiv.appendChild(newToDo);
+    createToDoElement(toDoInput.value);
 
     // Save to local storage
     savelocal(toDoInput.value);
-
-    // Check button
-    const checked = document.createElement('button');
-    checked.innerHTML = '<i class="fas fa-check"></i>';
-    checked.classList.add('check-btn', `${savedTheme}-button`);
-    toDoDiv.appendChild(checked);
-
-    // Delete button
-    const deleted = document.createElement('button');
-    deleted.innerHTML = '<i class="fas fa-trash"></i>';
-    deleted.classList.add('delete-btn', `${savedTheme}-button`);
-    toDoDiv.appendChild(deleted);
-
-    // Edit button
-    const edited = document.createElement('button');
-    edited.innerHTML = '<i class="fas fa-edit"></i>';
-    edited.classList.add('edit-btn', `${savedTheme}-button`);
-    toDoDiv.appendChild(edited);
-
-    // Append to list
-    toDoList.appendChild(toDoDiv);
 
     // Clear input field
     toDoInput.value = '';
@@ -80,11 +51,12 @@ function deletecheck(event) {
     if (item.classList.contains('edit-btn')) {
         const toDoDiv = item.parentElement;
         const todoText = toDoDiv.querySelector('.todo-item');
-        const newText = prompt("Edit your task:", todoText.innerText);
+        const oldText = todoText.innerText;
+        const newText = prompt("Edit your task:", oldText);
 
-        if (newText && newText.trim() !== '') {
+        if (newText && newText.trim() !== '' && newText !== oldText) {
             todoText.innerText = newText;
-            updateLocalTodos(toDoDiv, newText);
+            updateLocalTodos(oldText, newText);
         }
     }
 }
@@ -98,51 +70,49 @@ function savelocal(todo) {
 
 function getTodos() {
     const todos = JSON.parse(localStorage.getItem('todos')) || [];
-
-    todos.forEach(todo => {
-        const toDoDiv = document.createElement("div");
-        toDoDiv.classList.add("todo", `${savedTheme}-todo`);
-
-        const newToDo = document.createElement('li');
-        newToDo.innerText = todo;
-        newToDo.classList.add('todo-item');
-        toDoDiv.appendChild(newToDo);
-
-        const checked = document.createElement('button');
-        checked.innerHTML = '<i class="fas fa-check"></i>';
-        checked.classList.add("check-btn", `${savedTheme}-button`);
-        toDoDiv.appendChild(checked);
-
-        const deleted = document.createElement('button');
-        deleted.innerHTML = '<i class="fas fa-trash"></i>';
-        deleted.classList.add("delete-btn", `${savedTheme}-button`);
-        toDoDiv.appendChild(deleted);
-
-        const edited = document.createElement('button');
-        edited.innerHTML = '<i class="fas fa-edit"></i>';
-        edited.classList.add('edit-btn', `${savedTheme}-button`);
-        toDoDiv.appendChild(edited);
-
-        toDoList.appendChild(toDoDiv);
-    });
+    todos.forEach(todo => createToDoElement(todo));
 }
 
 function removeLocalTodos(todo) {
-    const todos = JSON.parse(localStorage.getItem('todos')) || [];
-    const todoIndex = todos.indexOf(todo.children[0].innerText);
-    if (todoIndex !== -1) {
-        todos.splice(todoIndex, 1);
-    }
+    let todos = JSON.parse(localStorage.getItem('todos')) || [];
+    todos = todos.filter(t => t !== todo.children[0].innerText);
     localStorage.setItem('todos', JSON.stringify(todos));
 }
 
-function updateLocalTodos(todoDiv, newText) {
-    const todos = JSON.parse(localStorage.getItem('todos')) || [];
-    const todoIndex = todos.indexOf(todoDiv.querySelector('.todo-item').innerText);
+function updateLocalTodos(oldText, newText) {
+    let todos = JSON.parse(localStorage.getItem('todos')) || [];
+    const todoIndex = todos.indexOf(oldText);
     if (todoIndex !== -1) {
         todos[todoIndex] = newText;
     }
     localStorage.setItem('todos', JSON.stringify(todos));
+}
+
+function createToDoElement(text) {
+    const toDoDiv = document.createElement("div");
+    toDoDiv.classList.add('todo', `${savedTheme}-todo`);
+
+    const newToDo = document.createElement('li');
+    newToDo.innerText = text;
+    newToDo.classList.add('todo-item');
+    toDoDiv.appendChild(newToDo);
+
+    const checked = document.createElement('button');
+    checked.innerHTML = '<i class="fas fa-check"></i>';
+    checked.classList.add('check-btn', `${savedTheme}-button`);
+    toDoDiv.appendChild(checked);
+
+    const deleted = document.createElement('button');
+    deleted.innerHTML = '<i class="fas fa-trash"></i>';
+    deleted.classList.add('delete-btn', `${savedTheme}-button`);
+    toDoDiv.appendChild(deleted);
+
+    const edited = document.createElement('button');
+    edited.innerHTML = '<i class="fas fa-edit"></i>';
+    edited.classList.add('edit-btn', `${savedTheme}-button`);
+    toDoDiv.appendChild(edited);
+
+    toDoList.appendChild(toDoDiv);
 }
 
 // Change theme function
